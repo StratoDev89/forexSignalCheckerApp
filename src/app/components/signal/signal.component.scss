@@ -1,0 +1,59 @@
+@use "../../../styles.scss" as s;
+
+.signal {
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  border: 1px solid s.$border-color;
+  min-height: 5rem;
+  padding: s.$padding;
+
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    column-gap: 0.5rem;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem;
+
+    @include s.mobile {
+      justify-content: center;
+    }
+  }
+
+  span {
+    display: grid;
+    place-content: center;
+    padding: 0.5rem;
+    height: 100%;
+  }
+
+  span:nth-child(1) {
+    font-size: clamp(1.3em, 1.5vw, 1.8em);
+  }
+
+  .status {
+    border-radius: 10px;
+    color: s.$white;
+    margin-top: 0.5rem;
+  }
+}
+
+.green {
+  background-color: rgb(46, 195, 46);
+}
+
+.red {
+  background-color: rgb(207, 53, 53);
+}
+
+.blue {
+  background-color: rgb(42, 42, 224);
+}

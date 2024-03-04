@@ -1,0 +1,33 @@
+<div class="signal primary-font">
+  <div class="header">
+    <span>{{ forexSignal().pair }}</span>
+    <span>Entry date: {{ forexSignal().entryDate }}</span>
+    <span>Entry price: {{ forexSignal().entryPrice }}</span>
+    <span>SL: {{ forexSignal().stopLoss }}</span>
+    <span>TP: {{ forexSignal().takeProfit }}</span>
+    <span>Interval: {{ forexSignal().interval }}</span>
+    <span> {{ forexSignal().tradeType }}</span>
+  </div>
+  <div class="footer">
+    <button mat-raised-button color="accent" (click)="checkSignal()">
+      Check
+    </button>
+
+    <button mat-raised-button color="warn" (click)="deleteSignal()">
+      delete
+    </button>
+  </div>
+  @if (forexSignal().status) {
+  <span class="status"
+    [class]="
+      forexSignal().status === 'TP HIT'
+        ? 'green'
+        : forexSignal().status === 'SL HIT'
+        ? 'red'
+        : 'blue'
+    "
+    >{{ forexSignal().status }}
+  </span>
+
+  }
+</div>

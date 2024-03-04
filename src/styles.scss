@@ -1,1 +1,132 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+$base-color: #3d4143;
+$border-color: #777a7b;
+$gray: #212024;
+$white: #fffefe;
+$black: #333333;
+$padding: 2rem;
+
+html,
+body {
+  height: 100%;
+  background-color: $white;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.primary-font {
+  font-family: Arial, Helvetica, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(1em, 1.2vw, 1.6em);
+  font-variation-settings: "wdth" 100;
+  color: $black;
+}
+
+.border-container {
+  border-radius: 10px;
+}
+
+$custom-primary-palette: (
+  50: #e8e8e8,
+  100: #c5c6c7,
+  200: #9ea0a1,
+  300: #777a7b,
+  400: #5a5e5f,
+  500: #3d4143,
+  600: #373b3d,
+  700: #2f3234,
+  800: #272a2c,
+  900: #1a1c1e,
+  A100: #6fcaf7,
+  A200: #3eb8f5,
+  A400: #01aaff,
+  A700: #009ae6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);
+
+$custom-accent-palette: (
+  50: #ebecec,
+  100: #cecfcf,
+  200: #adafaf,
+  300: #8c8e8f,
+  400: #737677,
+  500: #5a5e5f,
+  600: #525657,
+  700: #484c4d,
+  800: #3f4243,
+  900: #2e3132,
+  A100: #8ddcf6,
+  A200: #5ecef3,
+  A400: #1fc7ff,
+  A700: #05c1ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$custom-primary: mat.define-palette($custom-primary-palette);
+$custom-accent: mat.define-palette($custom-accent-palette);
+$custom-warn: mat.define-palette(mat.$red-palette);
+
+$custom-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $custom-primary,
+      accent: $custom-accent,
+      warn: $custom-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($custom-theme);
+
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 481px) and (max-width: 1024px) {
+    @content;
+  }
+}
