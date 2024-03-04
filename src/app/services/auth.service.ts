@@ -12,8 +12,8 @@ export class AuthService {
     localStorage.setItem(this.value, apiKey);
   }
 
-  getApiKey(): string {
-    return localStorage.getItem(this.value) ?? '';
+  getApiKey(): string | null {
+    return localStorage.getItem(this.value) ?? null;
   }
 
   removeApiKey() {

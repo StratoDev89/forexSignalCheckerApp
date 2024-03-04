@@ -1,0 +1,40 @@
+<main>
+  @if(status() === 'notSaved') {
+  <h1>README</h1>
+  <div class="container">
+    <p class="primary-font">
+      This app works with an external API, you just have to follow this
+      <a
+        href="https://rapidapi.com/twelve-data1-twelve-data-default/api/twelve-data1/pricing"
+        target="_blank"
+        rel="noopener noreferrer"
+        >link</a
+      >, select the basic subscription and register, once you register you go to
+      your dashboard and under the "my apps" section you can click and you will
+      see your API KEY, just copy it and paste it here.
+    </p>
+    <form [formGroup]="apiForm" class="api-form" (submit)="onSave()">
+      <mat-form-field class="api-form-field">
+        <mat-label>API KEY</mat-label>
+        <input matInput type="text" formControlName="apiKey" />
+      </mat-form-field>
+      @if (apiForm.touched && apiForm.invalid) {
+      <span style="color: red">API KEY is required</span>
+      }
+      <div class="buttom">
+        <button type="submit" mat-raised-button color="accent">Save</button>
+      </div>
+    </form>
+
+    <span
+      >note: This will save your API KEY in your browser if you empty cache you
+      will have to put it again, the same applies for the signals you add.</span
+    >
+  </div>
+
+  } @else {
+  <p class="primary-font">Your API KEY was configured correctly.</p>
+  <a href="/" style="text-decoration: underline">Return to App</a>
+
+  }
+</main>

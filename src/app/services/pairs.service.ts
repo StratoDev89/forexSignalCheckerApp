@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
 })
 export class PairsService {
   private http = inject(HttpClient);
-  private apiKey = inject(AuthService).getApiKey()
+  private apiKey = inject(AuthService).getApiKey() ?? '';
   private apiUrl = environment.API_URL;
   private headers = new HttpHeaders({ 'X-RapidAPI-Key': this.apiKey });
   constructor() {}
